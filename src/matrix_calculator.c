@@ -54,7 +54,7 @@ int request_operation()
 
 void Sum_matrices()
 {
-    printf("Sum of matrices");
+    printf("Sum of matrices:\n");
 
     Matrix_size_p size = Request_size();    
     printf("\n");
