@@ -1,4 +1,4 @@
-// TODO: make flags simpler
+// TODO: make flags simpler, currently it contains all the files paths.
 
 {
 	"version": "2.0.0",
