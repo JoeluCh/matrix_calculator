@@ -14,6 +14,7 @@ void Print_matrix(Matrix_p mat);
 // operations
 Matrix_p Get_sum(Matrix_p mat_one, Matrix_p mat_two);
 Matrix_p Get_substraction(Matrix_p mat_one, Matrix_p mat_two);
-Matrix_p Apply_operation(Matrix_p mat_one, Matrix_p mat_two, BOOL is_sum);
+Matrix_p Apply_sum_sub_operation(Matrix_p mat_one, Matrix_p mat_two, BOOL is_sum);
+Matrix_p Get_scaled_matrix(Matrix_p mat_one, double scale);
 
 #endif

@@ -6,7 +6,8 @@ typedef enum MENU_OPTIONS
 {
     SUM          = 1,
     SUBSTRACTION = 2,
-    EXIT         = 3,
+    SCALE        = 3,
+    EXIT         = 4,
 } MENU_OPTIONS;
 
 int main()
@@ -22,11 +23,15 @@ int main()
         {
             case SUM:
                 Sum_matrices();
-            break;
+                break;
 
             case SUBSTRACTION:
                 Substract_matrices();
-            break;
+                break;
+
+            case SCALE:
+                Scale_matrix();
+                break;
 
             case EXIT:
                 printf("Exiting matrix calculator...\n");
@@ -34,6 +39,7 @@ int main()
                 return 0;
             default:
                 printf("Operation number \"%d\" not supported.", selected_option);
+                break;
         }      
     }
 }
@@ -45,6 +51,7 @@ int request_operation()
     printf("Select the matrix operation to be performed:\n");
     printf("%d. Addition\n", SUM);
     printf("%d. Substraction\n", SUBSTRACTION);
+    printf("%d. Constant scaling\n", SCALE);
     printf("%d. Exit\n", EXIT);
     printf("Option: ");
 
@@ -57,57 +64,6 @@ int request_operation()
     printf("\n");
 
     return option;
-}
-
-void Sum_matrices()
-{
-    Join_matrices(TRUE);
-}
-
-void Substract_matrices()
-{
-    Join_matrices(FALSE);
-}
-
-void Join_matrices(BOOL is_sum)
-{
-    if(is_sum){
-        printf("Sum of matrices:\n");
-    }
-    else{
-        printf("Substraction of matrices:\n");
-    }
-
-    Matrix_size_p size = Request_size();    
-    printf("\n");
-
-    printf("Matrix A:\n");
-    Matrix_p A = Request_matrix(size);
-    printf("\n");
-
-    // create and fill B matrix
-    printf("Matrix B:\n");
-    Matrix_p B = Request_matrix(size);
-    printf("\n");
-
-    Matrix_p C = NULL;
-
-    if(is_sum){
-        printf("C = A + B is:\n");
-        C = Get_sum(A, B);
-    }else{
-        printf("C = A - B is:\n");
-        C = Get_substraction(A, B);
-    }
-
-    //print results
-    Print_matrix(C);
-
-    // release memory resources
-    free(size);
-    free(A);
-    free(B);
-    free(C);
 }
 
 Matrix_size_p Request_size()
@@ -155,4 +111,90 @@ Matrix_p Request_matrix(Matrix_size_p size){
     }
 
     return mat;
+}
+
+///////////////////////////////////////////////////////////
+// Main Operations
+//////////////////////////////////////////////////////////
+
+Matrix_p Sum_matrices()
+{
+    return Join_matrices(TRUE);
+}
+
+Matrix_p Substract_matrices()
+{
+    return Join_matrices(FALSE);
+}
+
+Matrix_p Join_matrices(BOOL is_sum)
+{
+    if(is_sum){
+        printf("Sum of matrices:\n");
+    }
+    else{
+        printf("Substraction of matrices:\n");
+    }
+
+    Matrix_size_p size = Request_size();    
+    printf("\n");
+
+    printf("Matrix A:\n");
+    Matrix_p A = Request_matrix(size);
+    printf("\n");
+
+    // create and fill B matrix
+    printf("Matrix B:\n");
+    Matrix_p B = Request_matrix(size);
+    printf("\n");
+
+    Matrix_p C = NULL;
+
+    if(is_sum){
+        printf("C = A + B is:\n");
+        C = Get_sum(A, B);
+    }else{
+        printf("C = A - B is:\n");
+        C = Get_substraction(A, B);
+    }
+
+    //print results
+    Print_matrix(C);
+
+    // release memory resources
+    free(size);
+    free(A);
+    free(B);
+    
+    return C;
+}
+
+Matrix_p Scale_matrix()
+{
+    printf("Matrix scaling:\n");
+
+    Matrix_size_p size = Request_size();    
+    printf("\n");
+
+    printf("Matrix A:\n");
+    Matrix_p A = Request_matrix(size);
+    printf("\n");
+
+    double scale = 0;
+
+    printf("Scale? ");
+    if(scanf("%lf", &scale) != 1){
+        printf("Error: Input was not a valid number.");
+        system("pause");
+        exit(1);
+    }
+
+    printf("\n");
+
+    Matrix_p k_A = Get_scaled_matrix(A, scale);
+    printf("%.3f A is:\n");
+    Print_matrix(k_A);
+    free(A);
+
+    return k_A;
 }

@@ -7,9 +7,11 @@
 int request_operation(void);
 
 // available operations
-void Join_matrices(BOOL);
-void Sum_matrices(void);
-void Substract_matrices(void);
+Matrix_p Join_matrices(BOOL);
+Matrix_p Sum_matrices(void);
+Matrix_p Substract_matrices(void);
+Matrix_p Scale_matrix(void);
+
 
 // auxiliar functions to request size and data from a given matrix
 Matrix_size_p Request_size(void);

@@ -66,15 +66,15 @@ void Print_matrix(Matrix_p mat)
 
 Matrix_p Get_sum(Matrix_p mat_one, Matrix_p mat_two)
 {
-    return Apply_operation(mat_one, mat_two, TRUE);
+    return Apply_sum_sub_operation(mat_one, mat_two, TRUE);
 }
 
 Matrix_p Get_substraction(Matrix_p mat_one, Matrix_p mat_two)
 {
-    return Apply_operation(mat_one, mat_two, FALSE);
+    return Apply_sum_sub_operation(mat_one, mat_two, FALSE);
 }
 
-Matrix_p Apply_operation(Matrix_p mat_one, Matrix_p mat_two, BOOL is_sum)
+Matrix_p Apply_sum_sub_operation(Matrix_p mat_one, Matrix_p mat_two, BOOL is_sum)
 {
     if(mat_one -> size -> cols_num != mat_two -> size -> cols_num ||
        mat_one -> size -> rows_num != mat_two -> size -> rows_num ){
@@ -84,14 +84,28 @@ Matrix_p Apply_operation(Matrix_p mat_one, Matrix_p mat_two, BOOL is_sum)
         exit(4);
     }
 
-    Matrix_p sum = Create_matrix(mat_one -> size);
+    Matrix_p result = Create_matrix(mat_one -> size);
 
     int i,j;
     for(i= 0; i < mat_one -> size -> rows_num; i++){
         for(j = 0; j < mat_one -> size -> cols_num; j++){
-            sum -> data[i][j] = mat_one -> data[i][j] + (is_sum? 1 : -1) * mat_two -> data[i][j];
+            result -> data[i][j] = mat_one -> data[i][j] + (is_sum? 1 : -1) * mat_two -> data[i][j];
         }
     }
 
-    return sum;
+    return result;
+}
+
+Matrix_p Get_scaled_matrix(Matrix_p mat_one, double scale)
+{
+    Matrix_p scaled = Create_matrix(mat_one -> size);
+
+    int i,j;
+    for(i= 0; i < mat_one -> size -> rows_num; i++){
+        for(j = 0; j < mat_one -> size -> cols_num; j++){
+            scaled -> data[i][j] = scale *  mat_one -> data[i][j];
+        }
+    }
+
+    return scaled;
 }
