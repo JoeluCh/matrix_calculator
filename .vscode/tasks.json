@@ -16,7 +16,7 @@
 				"${workspaceFolder}\\include\\matrix_operations.h",
 				"${workspaceFolder}\\include\\matrix_calculator.h",
 				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+				"${workspaceFolder}\\Exe\\Matrix_calculator.exe"
 			],
 			"problemMatcher": [
 				"$gcc"

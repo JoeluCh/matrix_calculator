@@ -11,6 +11,7 @@ typedef enum MENU_OPTIONS
 
 int main()
 {
+    printf("---------------------------------\n");
     printf("Matrix calculator \n");
     MENU_OPTIONS selected_option;
 
@@ -42,9 +43,9 @@ int request_operation()
     int option;
 
     printf("Select the matrix operation to be performed:\n");
-    printf("1. Addition\n");
-    printf("2. Substraction\n");
-    printf("3. Exit\n");
+    printf("%d. Addition\n", SUM);
+    printf("%d. Substraction\n", SUBSTRACTION);
+    printf("%d. Exit\n", EXIT);
     printf("Option: ");
 
     if(scanf("%d", &option) != 1){
