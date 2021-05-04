@@ -4,8 +4,9 @@
 
 typedef enum MENU_OPTIONS
 {
-    SUM  = 1,
-    EXIT = 2,
+    SUM          = 1,
+    SUBSTRACTION = 2,
+    EXIT         = 3,
 } MENU_OPTIONS;
 
 int main()
@@ -20,6 +21,10 @@ int main()
         {
             case SUM:
                 Sum_matrices();
+            break;
+
+            case SUBSTRACTION:
+                Substract_matrices();
             break;
 
             case EXIT:
@@ -38,7 +43,8 @@ int request_operation()
 
     printf("Select the matrix operation to be performed:\n");
     printf("1. Addition\n");
-    printf("2. Exit\n");
+    printf("2. Substraction\n");
+    printf("3. Exit\n");
     printf("Option: ");
 
     if(scanf("%d", &option) != 1){
@@ -54,7 +60,22 @@ int request_operation()
 
 void Sum_matrices()
 {
-    printf("Sum of matrices:\n");
+    Join_matrices(TRUE);
+}
+
+void Substract_matrices()
+{
+    Join_matrices(FALSE);
+}
+
+void Join_matrices(BOOL is_sum)
+{
+    if(is_sum){
+        printf("Sum of matrices:\n");
+    }
+    else{
+        printf("Substraction of matrices:\n");
+    }
 
     Matrix_size_p size = Request_size();    
     printf("\n");
@@ -68,8 +89,17 @@ void Sum_matrices()
     Matrix_p B = Request_matrix(size);
     printf("\n");
 
-    printf("C = A + B is:\n");
-    Matrix_p C = Get_sum(A, B);
+    Matrix_p C = NULL;
+
+    if(is_sum){
+        printf("C = A + B is:\n");
+        C = Get_sum(A, B);
+    }else{
+        printf("C = A - B is:\n");
+        C = Get_substraction(A, B);
+    }
+
+    //print results
     Print_matrix(C);
 
     // release memory resources
