@@ -1,0 +1,30 @@
+// TODO: make flags simpler, currently it contains all the files paths.
+
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "gcc build",
+			"command": "gcc.exe",
+			"args": [
+				"-g",
+				"${workspaceFolder}\\src\\matrix_operations.c",
+				"${workspaceFolder}\\src\\matrix_calculator.c",
+				"${workspaceFolder}\\include\\basic_definitions.h",
+				"${workspaceFolder}\\include\\matrix_definitions.h",
+				"${workspaceFolder}\\include\\matrix_operations.h",
+				"${workspaceFolder}\\include\\matrix_calculator.h",
+				"-o",
+				"${workspaceFolder}\\Exe\\Matrix_calculator.exe"
+			],
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+		}
+	]
+}
