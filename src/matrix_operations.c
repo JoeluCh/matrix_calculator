@@ -40,6 +40,7 @@ void Fill_matrix(Matrix_p mat)
     }
 }
 
+//TODO: beautify matrix printing
 void Print_matrix(Matrix_p mat)
 {
     int i = 0, j = 0;
@@ -51,7 +52,6 @@ void Print_matrix(Matrix_p mat)
 
     printf("\nFilled data: \n");
 
-    //TODO:
     for(i= 0; i < mat -> size -> rows_num; i++){
         for(j = 0; j < mat -> size -> cols_num; j++){
             printf("[%d][%d] = %.3f\n", i, j, mat -> data[i][j]);
