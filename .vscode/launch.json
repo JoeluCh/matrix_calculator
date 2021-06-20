@@ -15,7 +15,6 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "internalConsoleOptions": ,
             "miDebuggerPath": "gdb.exe",
             "setupCommands": [
                 {

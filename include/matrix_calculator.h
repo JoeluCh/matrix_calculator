@@ -1,5 +1,5 @@
-#ifndef MATRIX_CALCULATOR_HEADER
-#define MATRIX_CALCULATOR_HEADER
+#ifndef _MATRIX_CALCULATOR_H_
+#define _MATRIX_CALCULATOR_H_
 
 #include "matrix_operations.h"
 

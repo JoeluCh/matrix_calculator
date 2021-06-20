@@ -1,5 +1,5 @@
-#ifndef MATRIX_OPERATIONS_HEADER
-#define MATRIX_OPERATIONS_HEADER
+#ifndef _MATRIX_OPERATIONS_H_
+#define _MATRIX_OPERATIONS_H_
 
 #include <stdio.h>
 #include <stdlib.h>

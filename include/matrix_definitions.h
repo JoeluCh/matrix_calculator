@@ -1,5 +1,5 @@
-#ifndef MATRIX_DEFINITIONS_HEADER
-#define MATRIX_DEFINITIONS_HEADER
+#ifndef _MATRIX_DEFINITIONS_H_
+#define _MATRIX_DEFINITIONS_H_
 
 // matrix size struct
 typedef struct Matrix_size 
